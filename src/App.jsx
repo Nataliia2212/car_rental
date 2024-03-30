@@ -10,12 +10,6 @@ import { selectIsRefresh, selectToken } from './redux/userSlice';
 import { useCurrentUserQuery } from './redux/contactsApi';
 
 export default function App() {
-  const token = useSelector(selectToken);
-  const skip = !token;
-  const isRefresh = useSelector(selectIsRefresh);
-
-  useCurrentUserQuery('', { skip });
-
   return isRefresh ? (
     <Preloader />
   ) : (
