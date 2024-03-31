@@ -1,47 +1,27 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { Phonebook, Login, Contacts, Register } from './pages/index';
-import { Preloader, PrivateRoute, PublicRoute } from './components';
 import Layout from './components/Layout/Layout';
-
-import { selectIsRefresh, selectToken } from './redux/userSlice';
-import { useCurrentUserQuery } from './redux/contactsApi';
+import Home from './pages/Home/Home';
+import Catalog from './pages/Catalog/Catalog';
+import Favorites from './pages/Favorites/Favorites';
+import { useDispatch } from 'react-redux';
+import { fetchDataRentalCarThunk } from './redux/operations';
 
 export default function App() {
-  return isRefresh ? (
-    <Preloader />
-  ) : (
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchDataRentalCarThunk());
+  }, [dispatch]);
+
+  return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Phonebook />} />
-          <Route
-            path="login"
-            element={
-              <PublicRoute>
-                <Login />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="register"
-            element={
-              <PublicRoute>
-                <Register />
-              </PublicRoute>
-            }
-          />
-
-          <Route
-            path="contacts"
-            element={
-              <PrivateRoute>
-                <Contacts />
-              </PrivateRoute>
-            }
-          />
+          <Route index element={<Home />} />
+          <Route path="catalog" element={<Catalog />} />
+          <Route path="favorites" element={<Favorites />} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

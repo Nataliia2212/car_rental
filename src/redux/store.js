@@ -10,36 +10,27 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-
-import { contactsApi } from './contactsApi';
-import { filterReducer } from './filterSlice';
-import { userReducer } from './userSlice';
-import { setupListeners } from '@reduxjs/toolkit/query';
+import { carsReducer } from './carSlice';
 
 const persistConfig = {
-  key: 'auth',
+  key: 'favorites',
   version: 1,
   storage,
-  whitelist: ['token'],
+  whitelist: ['favorites'],
 };
-
-const persistedReducer = persistReducer(persistConfig, userReducer);
 
 export const store = configureStore({
   reducer: {
-    filter: filterReducer,
-    [contactsApi.reducerPath]: contactsApi.reducer,
-    auth: persistedReducer,
+    carRental: persistReducer(persistConfig, carsReducer),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(contactsApi.middleware),
+    }),
 
   devTools: process.env.NODE_ENV !== 'production',
 });
 
 export const persistor = persistStore(store);
-setupListeners(store.dispatch);
