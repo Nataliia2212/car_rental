@@ -2,10 +2,20 @@ import React from 'react';
 
 import css from './Filter.module.css';
 import makes from '../../data/make.json';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDataRentalCarThunk } from '../../redux/operations';
+import { selectParams } from '../../redux/carSlice';
 
 export default function Filter() {
+  const dispatch = useDispatch();
+  const params = useSelector(selectParams);
+  const handleSubmit = e => {
+    e.preaventDefault();
+
+    // dispatch(fetchDataRentalCarThunk(params));
+  };
   return (
-    <div className={css.wrap}>
+    <form className={css.wrap} onSubmit={handleSubmit}>
       <label></label>
       <select name="makeCars">
         {makes.map(make => (
@@ -14,6 +24,7 @@ export default function Filter() {
           </option>
         ))}
       </select>
-    </div>
+      <button>Search</button>
+    </form>
   );
 }

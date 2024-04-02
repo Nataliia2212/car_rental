@@ -12,10 +12,12 @@ const initialState = {
   params: {
     page: 1,
     limit: 12,
+    make: null,
   },
   error: null,
   loading: false,
   refresh: false,
+  skip: 0,
 };
 
 const carsSlice = createSlice({
@@ -27,6 +29,9 @@ const carsSlice = createSlice({
     selectMakeCars: state => state.filter.make,
     selectRentalPrice: state => state.filter.rentalPrice,
     selectParams: state => state.params,
+    selectSkip: state => state.skip,
+    selectPage: state => state.params.page,
+    selectLimit: state => state.params.limit,
   },
   reducers: {
     toggleFavorites: (state, { payload }) => {
@@ -41,6 +46,17 @@ const carsSlice = createSlice({
     },
     loadMore: state => {
       state.params.page += 1;
+    },
+    nextPage: state => {
+      state.params.page = state.params.page + 1;
+    },
+    prevPage: state => {
+      console.log(state.params.page);
+      state.params.page = state.params.page - 1;
+    },
+    selectedPage: (state, { payload }) => {
+      state.params.page = payload;
+      console.log(payload);
     },
     refresh: state => {
       return initialState;
@@ -63,11 +79,21 @@ const carsSlice = createSlice({
 });
 
 export const carsReducer = carsSlice.reducer;
-export const { toggleFavorites, loadMore, refresh } = carsSlice.actions;
+export const {
+  toggleFavorites,
+  loadMore,
+  refresh,
+  nextPage,
+  prevPage,
+  selectedPage,
+} = carsSlice.actions;
 export const {
   selectCars,
   selectFavorites,
   selectMakeCars,
   selectRentalPrice,
   selectParams,
+  selectSkip,
+  selectPage,
+  selectLimit,
 } = carsSlice.selectors;
