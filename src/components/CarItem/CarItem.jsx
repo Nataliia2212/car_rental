@@ -1,9 +1,10 @@
 import React from 'react';
-import s from './CarItem.module.css';
-import sprite from '../../img/sprite.svg';
 import clsx from 'clsx';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFavorites, toggleFavorites } from '../../redux/carSlice';
+import s from './CarItem.module.css';
+import sprite from '../../img/sprite.svg';
 
 const CarItem = ({ car, handleOpenModal }) => {
   const address = car.address.split(', ');

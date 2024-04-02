@@ -10,7 +10,6 @@ export const fetchDataRentalCarThunk = createAsyncThunk(
       const { data } = await axios.get('adverts', {
         params: { ...configParams },
       });
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

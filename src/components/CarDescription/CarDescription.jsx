@@ -1,4 +1,5 @@
 import React from 'react';
+
 import s from './CarDescription.module.css';
 
 const CarDescription = ({ car }) => {

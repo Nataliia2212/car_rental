@@ -1,15 +1,14 @@
 import React from 'react';
-import CarsList from '../../components/CarsList/CarsList';
 import { useDispatch, useSelector } from 'react-redux';
+
+import CarsList from '../../components/CarsList/CarsList';
+
 import {
-  loadMore,
   nextPage,
   prevPage,
   selectCars,
   selectLimit,
   selectPage,
-  selectParams,
-  selectSkip,
   selectedPage,
 } from '../../redux/carSlice';
 import Filter from '../../components/Filter/Filter';
@@ -31,13 +30,8 @@ const Catalog = () => {
   };
 
   const handleSelectPage = number => {
-    console.log(number);
     dispatch(selectedPage(number));
   };
-
-  // const handleClick = () => {
-  //   dispatch(loadMore());
-  // };
 
   return (
     <section className="section">
@@ -45,7 +39,6 @@ const Catalog = () => {
         <h1 className="visually-hidden">Car rental</h1>
         <Filter />
         <CarsList cars={cars} />
-        {/* <button onClick={handleClick}>Load more</button> */}
         <div>
           <button disabled={page === 1} onClick={onPrevPage}>
             prev

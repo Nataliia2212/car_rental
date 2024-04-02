@@ -3,16 +3,15 @@ import React from 'react';
 import css from './Filter.module.css';
 import makes from '../../data/make.json';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchDataRentalCarThunk } from '../../redux/operations';
 import { selectParams } from '../../redux/carSlice';
+import { fetchDataRentalCarThunk } from '../../redux/operations';
 
 export default function Filter() {
   const dispatch = useDispatch();
   const params = useSelector(selectParams);
   const handleSubmit = e => {
     e.preaventDefault();
-
-    // dispatch(fetchDataRentalCarThunk(params));
+    dispatch(fetchDataRentalCarThunk(params));
   };
   return (
     <form className={css.wrap} onSubmit={handleSubmit}>

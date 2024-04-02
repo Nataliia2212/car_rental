@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { selectFavorites } from '../../redux/carSlice';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { useModal } from '../../hooks/useModal';
-import CarItem from '../../components/CarItem/CarItem';
+
 import CarsList from '../../components/CarsList/CarsList';
+
+import { selectFavorites } from '../../redux/carSlice';
 
 const Favorites = () => {
   const favoritesCars = useSelector(selectFavorites);
-
-  // useEffect(() => {}, [favoritesCars]);
 
   return (
     <section className="section">

@@ -1,7 +1,8 @@
 import React from 'react';
+import clsx from 'clsx';
+
 import sprite from '../../img/sprite.svg';
 import s from './Home.module.css';
-import clsx from 'clsx';
 
 const Home = () => {
   return (

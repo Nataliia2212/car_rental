@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectCars } from '../../redux/carSlice';
-import CarItem from '../CarItem/CarItem';
-import { useModal } from '../../hooks/useModal';
 
 import Modal from '../Modal/Modal';
+import CarItem from '../CarItem/CarItem';
 import CarDescription from '../CarDescription/CarDescription';
+
+import { useModal } from '../../hooks/useModal';
 import s from './CarsList.module.css';
 
 const CarsList = ({ cars }) => {
