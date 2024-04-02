@@ -7,7 +7,7 @@ import Catalog from './pages/Catalog/Catalog';
 import Favorites from './pages/Favorites/Favorites';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDataRentalCarThunk } from './redux/operations';
-import { refresh, selectParams } from './redux/carSlice';
+import { selectParams } from './redux/carSlice';
 
 export default function App() {
   const dispatch = useDispatch();

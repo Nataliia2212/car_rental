@@ -10,14 +10,15 @@ export default function Filter() {
   const dispatch = useDispatch();
   const params = useSelector(selectParams);
   const handleSubmit = e => {
-    e.preaventDefault();
+    e.preventDefault();
+    console.log(e.target.value);
     dispatch(fetchDataRentalCarThunk(params));
   };
   return (
     <form className={css.wrap} onSubmit={handleSubmit}>
       <label></label>
       <select name="makeCars">
-        {makes.map(make => (
+        {makes?.map(make => (
           <option value={make} key={make}>
             {make}
           </option>
