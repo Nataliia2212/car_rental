@@ -1,0 +1,83 @@
+.imgCar {
+  margin-bottom: 14px;
+  border-radius: 14px;
+  width: 461px;
+  height: 248px;
+  object-fit: cover;
+
+  background: #f3f3f2,
+    linear-gradient(
+      180deg,
+      rgba(18, 20, 23, 0.5) 0%,
+      rgba(18, 20, 23, 0.5) 100%
+    );
+}
+
+.title {
+  margin-bottom: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33333;
+  color: #121417;
+
+  .span {
+    color: #3470ff;
+  }
+}
+
+.wrapTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  position: relative;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(18, 20, 23, 0.5);
+}
+
+.text:not(:last-child)::after {
+  display: block;
+  position: absolute;
+  /* margin-left: 6px; */
+  right: -6px;
+  top: 0;
+  content: '';
+  height: 100%;
+  width: 1px;
+  background-color: rgba(18, 20, 23, 0.1);
+}
+
+.wrapText {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 12px;
+  row-gap: 4px;
+}
+
+.description {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: #121417;
+}
+
+.subTitle {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: #121417;
+}
+
+.textOption {
+  border-radius: 35px;
+  padding: 7px 14px;
+  height: 32px;
+  background-color: #f9f9f9;
+}

@@ -5,15 +5,17 @@ import Layout from './components/Layout/Layout';
 import Home from './pages/Home/Home';
 import Catalog from './pages/Catalog/Catalog';
 import Favorites from './pages/Favorites/Favorites';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchDataRentalCarThunk } from './redux/operations';
+import { refresh, selectParams } from './redux/carSlice';
 
 export default function App() {
   const dispatch = useDispatch();
+  const params = useSelector(selectParams);
 
   useEffect(() => {
-    dispatch(fetchDataRentalCarThunk());
-  }, [dispatch]);
+    dispatch(fetchDataRentalCarThunk(params));
+  }, [dispatch, params]);
 
   return (
     <>

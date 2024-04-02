@@ -1,0 +1,39 @@
+.homeSection {
+  background-color: rgba(246, 249, 254, 1);
+}
+.title {
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.subTitle {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.listAdvantages {
+  display: flex;
+  gap: 30px;
+}
+
+.listItem {
+  flex-basis: calc((100% - 30px * 2) / 3);
+  padding: 15px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.wrapIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */

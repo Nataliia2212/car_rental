@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import s from './Modal.module.css';
+import sprite from '../../img/sprite.svg';
 
 const modalRoot = document.querySelector('#modal');
 
@@ -31,10 +32,10 @@ const Modal = ({ children, closeModal }) => {
   return ReactDOM.createPortal(
     <div className={s.modalWrapper} onClick={handleBackdropClick}>
       <div className={s.modalContent}>
-        <h1>Modal</h1>
-
         <button className={s.closeButton} onClick={closeModal}>
-          ×
+          <svg width="18" height="18">
+            <use href={`${sprite}#icon-close`}></use>
+          </svg>
         </button>
         {children}
       </div>

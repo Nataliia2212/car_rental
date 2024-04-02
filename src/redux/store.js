@@ -13,10 +13,10 @@ import {
 import { carsReducer } from './carSlice';
 
 const persistConfig = {
-  key: 'favorites',
+  key: 'carRental',
   version: 1,
   storage,
-  whitelist: ['favorites'],
+  // whitelist: ['favorites'],
 };
 
 export const store = configureStore({

@@ -11,11 +11,10 @@ const Layout = () => {
       <header className={s.wrapper}>
         <NavBar />
       </header>
-      <div className={s.outletWrapper}>
-        <Suspense fallback={<h1>Load page....</h1>}>
-          <Outlet />
-        </Suspense>
-      </div>
+
+      <Suspense fallback={<h1>Load page....</h1>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
