@@ -7,17 +7,20 @@ import Catalog from './pages/Catalog/Catalog';
 import Favorites from './pages/Favorites/Favorites';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDataRentalCarThunk } from './redux/operations';
-import { selectParams } from './redux/carSlice';
+import { selectLoading, selectParams } from './redux/carSlice';
+import { Preloader } from './components/Preloader/Preloader';
 
 export default function App() {
   const dispatch = useDispatch();
   const params = useSelector(selectParams);
-
+  const isLoading = useSelector(selectLoading);
   useEffect(() => {
     dispatch(fetchDataRentalCarThunk(params));
   }, [dispatch, params]);
 
-  return (
+  return isLoading ? (
+    <Preloader />
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>

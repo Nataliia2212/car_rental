@@ -15,7 +15,6 @@
 
 .title {
   margin-bottom: 8px;
-  font-family: 'Manrope', sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.33333;
@@ -33,7 +32,6 @@
 
 .text {
   position: relative;
-  font-family: 'Manrope', sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
@@ -59,7 +57,8 @@
 }
 
 .description {
-  font-family: 'Manrope', sans-serif;
+  margin-top: 14px;
+  margin-bottom: 24px;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.42857;
@@ -67,11 +66,18 @@
 }
 
 .subTitle {
-  font-family: 'Manrope', sans-serif;
+  margin-bottom: 8px;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.42857;
   color: #121417;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
 .textOption {

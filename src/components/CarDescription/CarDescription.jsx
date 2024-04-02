@@ -1,6 +1,8 @@
 import React from 'react';
+import clsx from 'clsx';
 
 import s from './CarDescription.module.css';
+import { Link } from 'react-router-dom';
 
 const CarDescription = ({ car }) => {
   const address = car.address.split(', ');
@@ -44,7 +46,7 @@ const CarDescription = ({ car }) => {
         ))}
       </div>
       <h3 className={s.subTitle}>Rental Conditions: </h3>
-      <div className={s.wrapText}>
+      <div className={s.wrap}>
         {rentalConditions.map(rentalCondition => (
           <p key={rentalCondition} className={s.textOption}>
             {rentalCondition}
@@ -53,7 +55,9 @@ const CarDescription = ({ car }) => {
         <p className={s.textOption}>Mileage: {car.mileage}</p>{' '}
         <p className={s.textOption}>Price: {car.rentalPrice}</p>
       </div>
-      <button className="btn">Rental car</button>
+      <Link to="tel:+380730000000" className={clsx('btn', 'link')}>
+        Rental car
+      </Link>
     </div>
   );
 };

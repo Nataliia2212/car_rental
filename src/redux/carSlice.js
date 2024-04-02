@@ -30,6 +30,7 @@ const carsSlice = createSlice({
     selectParams: state => state.params,
     selectPage: state => state.params.page,
     selectLimit: state => state.params.limit,
+    selectLoading: state => state.loading,
   },
   reducers: {
     toggleFavorites: (state, { payload }) => {
@@ -42,8 +43,8 @@ const carsSlice = createSlice({
         state.favorites.push(payload);
       }
     },
-    loadMore: state => {
-      state.params.page += 1;
+    filter: (state, { payload }) => {
+      state.params.make = payload;
     },
     nextPage: state => {
       state.params.page = state.params.page + 1;
@@ -54,21 +55,43 @@ const carsSlice = createSlice({
     selectedPage: (state, { payload }) => {
       state.params.page = payload;
     },
+    reset: state => {
+      state.params = {
+        page: 1,
+        limit: 12,
+        make: null,
+      };
+    },
   },
   extraReducers: builder => {
-    builder.addCase(fetchDataRentalCarThunk.fulfilled, (state, { payload }) => {
-      state.cars = payload;
-      state.filter.make = payload.map(car => car.make);
-      state.filter.rentalPrice = payload.map(car => car.rentalPrice);
+    builder
+      .addCase(fetchDataRentalCarThunk.fulfilled, (state, { payload }) => {
+        state.cars = payload;
+        state.filter.make = payload.map(car => car.make);
+        state.filter.rentalPrice = payload.map(car => car.rentalPrice);
 
-      state.loading = false;
-    });
+        state.loading = false;
+      })
+      .addCase(fetchDataRentalCarThunk.pending, (state, { payload }) => {
+        state.error = false;
+        state.loading = true;
+      })
+      .addCase(fetchDataRentalCarThunk.rejected, (state, { payload }) => {
+        state.error = payload;
+        state.loading = false;
+      });
   },
 });
 
 export const carsReducer = carsSlice.reducer;
-export const { toggleFavorites, nextPage, prevPage, selectedPage } =
-  carsSlice.actions;
+export const {
+  toggleFavorites,
+  nextPage,
+  prevPage,
+  selectedPage,
+  filter,
+  reset,
+} = carsSlice.actions;
 export const {
   selectCars,
   selectFavorites,
@@ -77,4 +100,5 @@ export const {
   selectParams,
   selectPage,
   selectLimit,
+  selectLoading,
 } = carsSlice.selectors;

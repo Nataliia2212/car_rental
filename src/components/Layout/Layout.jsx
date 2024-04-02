@@ -9,7 +9,10 @@ const Layout = () => {
   return (
     <div>
       <header className={s.wrapper}>
-        <NavBar />
+        <div className="container">
+          {' '}
+          <NavBar />
+        </div>
       </header>
 
       <Suspense fallback={<h1>Load page....</h1>}>
