@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CarsList from '../../components/CarsList/CarsList';
 
+import s from './Catalog.module.css';
+
 import {
   nextPage,
   prevPage,
@@ -39,18 +41,26 @@ const Catalog = () => {
         <h1 className="visually-hidden">Car rental</h1>
         <Filter />
         <CarsList cars={cars} />
-        <div>
-          <button disabled={page === 1} onClick={onPrevPage}>
+        <div className={s.btnWrap}>
+          <button className={s.btn} disabled={page === 1} onClick={onPrevPage}>
             prev
           </button>
           {Array(pageCount)
             .fill('')
             .map((_, index) => (
-              <button onClick={() => handleSelectPage(index + 1)} key={index}>
+              <button
+                onClick={() => handleSelectPage(index + 1)}
+                key={index}
+                className={s.btn}
+              >
                 {index + 1}
               </button>
             ))}
-          <button disabled={page === pageCount} onClick={onNextPage}>
+          <button
+            className={s.btn}
+            disabled={page === pageCount}
+            onClick={onNextPage}
+          >
             next
           </button>
         </div>
