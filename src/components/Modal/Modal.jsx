@@ -33,7 +33,7 @@ const Modal = ({ children, closeModal }) => {
     <div className={s.modalWrapper} onClick={handleBackdropClick}>
       <div className={s.modalContent}>
         <button className={s.closeButton} onClick={closeModal}>
-          <svg width="18" height="18">
+          <svg width="18" height="18" className={s.icon}>
             <use href={`${sprite}#icon-close`}></use>
           </svg>
         </button>
